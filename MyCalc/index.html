@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>My Calculator by iSwfe</title>
+		<style type="text/css">
+			body
+			{
+			}
+			#bgBlur
+			{
+				background-image:url("聚焦-90.jpg");
+				height:1080px;
+				text-align: center;
+				
+				float: left;
+				width: 100%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				filter: blur(5px);
+			}
+			#topDiv
+			{
+				position:absolute;
+				left: 0px;
+				right: 0px;
+				top:50px;
+				
+				text-align:center;
+			}
+			.title
+			{
+				width:230px;
+				margin:0px auto 30px auto;
+				border-style:solid;
+				border-width:2px;
+				border-radius:12px;
+				padding-bottom:5px;
+				
+				background-color:transparent;
+				//font-family:幼圆;
+				font-size:36px;
+				color:#00BFFF;
+				text-shadow: 2px 2px 0 #A97D9B, 3px 3px 2px #FFFFFF;
+			}
+			#rstBox
+			{
+				background-color:	#00FFFF;
+				text-align:center;
+				width:200px;
+				height:20px;
+				
+				border-style:solid;
+				border-color:#00BFFF;;
+				border-radius:15px;
+				border-left-style:solid;
+				//border-left-width:20px;
+				padding:0;
+				
+				color:black;
+				font-size:16px;
+				font-weight:400;
+				text-shadow:0px 2px 4px;
+			}
+			#mainDiv
+			{
+				
+				position:absolute;
+				left: 0px;
+				right: 0px;
+				top:200px;
+				
+				text-align:center;
+				/* border:solid; */
+				width:220px;
+				height:200px;
+				margin:10px auto 10px auto;
+				
+			}
+			.numButton
+			{
+				width:45px;
+				height:45px;
+				border:0;
+				margin:7px 2px 7px 2px;
+				
+				background-color:transparent;	/* 使bg-color透明 */
+				background-image:url("num.png");
+				background-repeat:round;
+				font-size:22px;
+				text-shadow:1px 1px 2px;
+				
+			}
+			.operateButton
+			{
+				background-color:transparent;
+				background-image:url("operate.png");
+				background-repeat:round;
+				font-size:22px;
+				text-shadow:1px 1px 2px;
+				border:0;
+				width:45px;
+				height:45px;
+				margin:2px;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		
+		<div>
+			<div id="bgBlur"></div>
+			<div id="topDiv">
+				<button class="title" title="[CE]:清空" onclick="location.reload()">我的计算器</button><br>
+
+				<input id="rstBox" type="text" placeholder="计算内容" onchange="alert(this.value)">
+			</div>
+			<div id="mainDiv">
+				<button class="numButton" onclick="inputNum(1)">1</button>
+				<button class="numButton" onclick="inputNum(2)">2</button>
+				<button class="numButton" onclick="inputNum(3)">3</button>
+				<button class="operateButton" onclick="operate('+')">+</button>
+
+				<button class="numButton" onclick="inputNum(4)">4</button>
+				<button class="numButton" onclick="inputNum(5)">5</button>
+				<button class="numButton" onclick="inputNum(6)">6</button>
+				<button class="operateButton" onclick="operate('-')">-</button>
+
+				<button class="numButton" onclick="inputNum(7)">7</button>
+				<button class="numButton" onclick="inputNum(8)">8</button>
+				<button class="numButton" onclick="inputNum(9)">9</button>
+				<button class="operateButton" onclick="operate('*')">*</button>
+
+				<button class="operateButton" onclick="operate('Del')">Del</button>
+				<button class="numButton" onclick="inputNum(0)">0</button>
+				<button class="operateButton" onclick="operate('=')">=</button>
+				<button class="operateButton" onclick="operate('/')">/</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="Calc.js"></script>
+	</body>
+</html>
