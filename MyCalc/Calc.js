@@ -6,24 +6,24 @@
  * 					由getNumArr()得出,该方法只由calc()调用.
  */
 var rstBoxID = "rstBox";
-var isCalcing = true;		//表示正在运算的指示器
-var boxVal = document.getElementById(rstBoxID).value;
+var isCalcing = true;	//表示正在运算的指示器
+var boxVal = "";
 var boxLen = boxVal.length;
-var numArr = [0, 0];
+var numArr = ["", 0, 0];
 //alert("12341234".search("[2\\+\\-\\*\\/]"));
-//从UI调用的方法有:inputNum(num) operate(opt)
 
+//从UI调用的方法有:inputNum(num) operate(opt)
 function inputNum(num)
 {
 	//如果检测到运算结束(isCalcing指示器关闭),则自动清除[opt:C](此opt会自动开启运算指示器)
 	if (! isCalcing)
 		optClear();
-	addBoxNum( num );
+	addBoxChar( num );
 }
 function operate(opt)
 {
 	//获得rstBox的值
-	boxVal = document.getElementById(rstBoxID).value;
+	boxVal = getBoxVal();
 	boxLen = boxVal.length;
 
 	switch(opt)
@@ -49,7 +49,7 @@ function operate(opt)
 		if (! isCalcing)
 			isCalcing = true;
 		//最后才允许添加运算符
-		addBoxNum(opt);
+		addBoxChar(opt);
 		break;
 	}
 }
@@ -57,7 +57,7 @@ function operate(opt)
 function calc()
 {
 	//获得rstBox的值
-	boxVal = document.getElementById(rstBoxID).value;
+	boxVal = getBoxVal();
 
 	//运算指示器智能控制模块,可根据当前boxVal去决定运算指示器是否应该关闭.
 		//大部分运算周期是开启的,只需要考虑关闭的情况
@@ -121,34 +121,44 @@ function setBox(rst)
 {//重新设置Box的新值
 	document.getElementById(rstBoxID).value = rst;
 	
-
-	//缓慢打出结果:
+//	rst = String(rst);
+//	//缓慢打出结果:
 //	for(var i=0; i<rst.length; i++)
 //	{
-//		setTimeOut("",100);
-//		document.getElementById(rstBoxID).value = rst.substring(0, i);
+//		alert(i);
+//		document.getElementById(rstBoxID).value = rst.substr(0, i+1);
+//		sleep(100);
 //	}
 }
 
-function addBoxNum(num)
+function getBoxVal()
 {
-	document.getElementById(rstBoxID).value += num;
+	rstBoxID = "rstBox";
+	return document.getElementById(rstBoxID).value;
+}
+
+function addBoxChar(str)
+{//追加一个或多个字符
+	document.getElementById(rstBoxID).value += str;
 }
 
 function delBoxLast()
 {
-	boxVal = document.getElementById(rstBoxID).value;
+	boxVal = getBoxVal();
 	setBox( boxVal.substring(0, boxVal.length-1) );
 }
 
 function optClear()
-{//功能键:opt:C
+{//功能键:[opt:C]
+	//默认执行:
 	document.getElementById(rstBoxID).value = "";
 	isCalcing = true;
-}
-
-function optClearError()
-{//功能键:[opt:CE]
-	document.getElementById(rstBoxID).value = "";
-	isCalcing = true;
+	//输入框内容清空时才执行,实现二级清除
+	if ( 0 == getBoxVal().length )
+	{
+		rstBoxID = "rstBox";
+		boxVal = "";
+		boxLen = boxVal.length;
+		numArr = ["", 0, 0];
+	}
 }

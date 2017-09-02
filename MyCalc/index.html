@@ -8,101 +8,101 @@
 			{
 			}
 			#bgBlur
-			{
-				background-image:url("聚焦-90.jpg");
-				height:1080px;
-				text-align: center;
+			{/* 背景图及模糊的调整 */
+				/* [元素对象]整体设置 */
+				height: 1000px;		/* 设置高度 */
+				width: 100%;		/* 宽度则为当前页面宽 */
+				text-align: center;	/* 里面的子元素水平居中 */
+				float: left;		/* 向左浮动 */
 				
-				float: left;
-				width: 100%;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: cover;
+				/* [图片]设置 */
+				background-image: url("images/聚焦-90.jpg");
+				background-repeat: no-repeat;	/* 不让图片去重复铺开 */
+				background-position: center;	/* 使图片的中心对齐元素框的中心 */
+				background-size: cover;			/* 使图片[适应]至页面,即比例不变, */
 				filter: blur(5px);
 			}
 			#topDiv
-			{
-				position:absolute;
-				left: 0px;
-				right: 0px;
-				top:50px;
-				
-				text-align:center;
+			{/* 顶部的整个元素框 */
+				/* 设置该元素对象 */
+				text-align: center;	/* 定义当前[垂直基线]位置为水平居中,[水平基线]位置为上个元素之后 */
+				position: absolute;	/* 定义[垂直和水平基线]绝对于页面的(0,0)去计算,而不是[相对于]上一个元素之后 */
+				left: 0px;			/* 根据上面的基线位置,让基线位于元素偏左边XXpx */
+				right: 0px;			/* 根据上面的基线位置,让基线位于元素偏右边XXpx */
+				top: 100px;			/* 根据上面的基线位置,让基线位于元素偏上边XXpx */
 			}
-			.title
+			.titleButton
 			{
-				width:230px;
-				margin:0px auto 30px auto;
-				border-style:solid;
-				border-width:2px;
-				border-radius:12px;
-				padding-bottom:5px;
+				width: 460px;
+				padding-bottom: 5px;
+				border-style: solid;
+				border-width: 4px;
+				border-radius: 24px;
+				margin: 0px auto 60px auto;
+				background-color: transparent;
 				
-				background-color:transparent;
-				//font-family:幼圆;
-				font-size:36px;
-				color:#00BFFF;
-				text-shadow: 2px 2px 0 #A97D9B, 3px 3px 2px #FFFFFF;
+				color: #00BFFF;
+				font-size: 72px;
+				text-shadow: 4px 4px 0 #A97D9B, 6px 6px 2px #FFFFFF;
 			}
 			#rstBox
 			{
-				background-color:	#00FFFF;
-				text-align:center;
-				width:200px;
-				height:20px;
+				width: 400px;
+				height: 40px;
+				text-align: center;
+				background-color: #00FFFF;
+				padding: 0;
+				border-style: solid;
+				border-color: #00BFFF;;
+				border-radius: 30px;
+				border-left-style: solid;
+				//border-left-width: 40px;
 				
-				border-style:solid;
-				border-color:#00BFFF;;
-				border-radius:15px;
-				border-left-style:solid;
-				//border-left-width:20px;
-				padding:0;
-				
-				color:black;
-				font-size:16px;
-				font-weight:400;
-				text-shadow:0px 2px 4px;
+				color: #202020;
+				font-size:28px;
+				font-style: italic;
+				text-shadow:1px 3px 3px gray;
 			}
 			#mainDiv
 			{
-				
+				width:440px;
+				height:400px;
 				position:absolute;
 				left: 0px;
 				right: 0px;
-				top:200px;
-				
+				top:400px;
 				text-align:center;
 				/* border:solid; */
-				width:220px;
-				height:200px;
-				margin:10px auto 10px auto;
+				margin:20px auto 20px auto;
 				
 			}
 			.numButton
 			{
-				width:45px;
-				height:45px;
-				border:0;
-				margin:7px 2px 7px 2px;
-				
-				background-color:transparent;	/* 使bg-color透明 */
-				background-image:url("num.png");
-				background-repeat:round;
-				font-size:22px;
-				text-shadow:1px 1px 2px;
+				width: 90px;
+				height: 90px;
+				border: 0;
+				margin: 7px 2px 7px 2px;
+				background-color: transparent;	/* 使bg-color透明 */
+				background-image: url("images/num.png");
+				background-repeat: round;
+
+				font-size: 48px;
+				font-weight: 100;
+				text-shadow: 2px 3px 9px;
 				
 			}
 			.operateButton
 			{
-				background-color:transparent;
-				background-image:url("operate.png");
-				background-repeat:round;
-				font-size:22px;
-				text-shadow:1px 1px 2px;
-				border:0;
-				width:45px;
-				height:45px;
-				margin:2px;
+				width: 90px;
+				height: 90px;
+				border: 0;
+				margin: 2px;
+				background-color: transparent;
+				background-image: url("images/operate.png");
+				background-repeat: round;
+
+				font-size: 48px;
+				text-shadow: 2px 2px 1px;
 			}
 		</style>
 		
@@ -113,30 +113,30 @@
 		<div>
 			<div id="bgBlur"></div>
 			<div id="topDiv">
-				<button class="title" title="[CE]:清空" onclick="location.reload()">我的计算器</button><br>
+				<button class="titleButton" title="[C]:直接清空" onclick="optClear()">我的计算器</button><br>
 
-				<input id="rstBox" type="text" placeholder="计算内容" onchange="alert(this.value)">
+				<input id="rstBox" type="text" title="请用下方按键输入~" placeholder="计算内容" onchange="alert('请勿直接输入内容哦!')">
 			</div>
 			<div id="mainDiv">
-				<button class="numButton" onclick="inputNum(1)">1</button>
-				<button class="numButton" onclick="inputNum(2)">2</button>
-				<button class="numButton" onclick="inputNum(3)">3</button>
-				<button class="operateButton" onclick="operate('+')">+</button>
+				<button class="numButton" title="数字键[1]" onclick="inputNum(1)">1</button>
+				<button class="numButton" title="数字键[2]" onclick="inputNum(2)">2</button>
+				<button class="numButton" title="数字键[3]" onclick="inputNum(3)">3</button>
+				<button class="operateButton" title="功能键[＋]:加法运算" onclick="operate('+')">＋</button>
 
-				<button class="numButton" onclick="inputNum(4)">4</button>
-				<button class="numButton" onclick="inputNum(5)">5</button>
-				<button class="numButton" onclick="inputNum(6)">6</button>
-				<button class="operateButton" onclick="operate('-')">-</button>
+				<button class="numButton" title="数字键[4]" onclick="inputNum(4)">4</button>
+				<button class="numButton" title="数字键[5]" onclick="inputNum(5)">5</button>
+				<button class="numButton" title="数字键[6]" onclick="inputNum(6)">6</button>
+				<button class="operateButton" title="功能键[－]:减法运算" onclick="operate('-')">－</button>
 
-				<button class="numButton" onclick="inputNum(7)">7</button>
-				<button class="numButton" onclick="inputNum(8)">8</button>
-				<button class="numButton" onclick="inputNum(9)">9</button>
-				<button class="operateButton" onclick="operate('*')">*</button>
+				<button class="numButton" title="数字键[7]" onclick="inputNum(7)">7</button>
+				<button class="numButton" title="数字键[8]" onclick="inputNum(8)">8</button>
+				<button class="numButton" title="数字键[9]" onclick="inputNum(9)">9</button>
+				<button class="operateButton" title="功能键[×]:乘法运算" onclick="operate('*')">×</button>
 
-				<button class="operateButton" onclick="operate('Del')">Del</button>
-				<button class="numButton" onclick="inputNum(0)">0</button>
-				<button class="operateButton" onclick="operate('=')">=</button>
-				<button class="operateButton" onclick="operate('/')">/</button>
+				<button class="operateButton" title="功能键[Del]:删除最后一个字符" onclick="operate('Del')">Del</button>
+				<button class="numButton" title="数字键[0]" onclick="inputNum(0)">0</button>
+				<button class="operateButton" title="功能键[＝]:计算结果" onclick="operate('=')">＝</button>
+				<button class="operateButton" title="功能键[÷]:除法运算" onclick="operate('/')">÷</button>
 			</div>
 		</div>
 		<script type="text/javascript" src="Calc.js"></script>
