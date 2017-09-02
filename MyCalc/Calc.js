@@ -122,8 +122,15 @@ function getNumArr(orgBoxStr)	//originalBoxString:原始的Box框字符串
 
 function setBox(rst)
 {//重新设置Box的新值
+	rst = String(rst);
+
+	//保留6位小数功能
+	if ( rst.lastIndexOf(".")>0 && rst.length-1-rst.lastIndexOf(".")>6 )
+		//保留6位小数
+		rst = Number(rst).toFixed(6);
+
 	document.getElementById(rstBoxID).value = rst;
-	
+
 //	rst = String(rst);
 //	//缓慢打出结果:
 //	for(var i=0; i<rst.length; i++)
