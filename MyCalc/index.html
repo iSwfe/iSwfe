@@ -20,6 +20,9 @@
 				background-repeat: no-repeat;	/* 不让图片去重复铺开 */
 				background-position: center;	/* 使图片的中心对齐元素框的中心 */
 				background-size: cover;			/* 使图片[适应]至页面,即比例不变, */
+		-webkit-filter: blur(5px); /* Chrome, Opera */
+		   -moz-filter: blur(5px);
+			-ms-filter: blur(5px);    
 				filter: blur(5px);
 			}
 			#topDiv
@@ -65,8 +68,8 @@
 			}
 			#mainDiv
 			{
-				width:440px;
-				height:400px;
+				width:450px;
+				height:450px;
 				position:absolute;
 				left: 0px;
 				right: 0px;
@@ -74,69 +77,68 @@
 				text-align:center;
 				/* border:solid; */
 				margin:20px auto 20px auto;
-				
 			}
 			.numButton
 			{
 				width: 90px;
 				height: 90px;
 				border: 0;
-				margin: 7px 2px 7px 2px;
+				margin: 10px 2px 10px 2px;
 				background-color: transparent;	/* 使bg-color透明 */
 				background-image: url("images/num.png");
 				background-repeat: round;
+				padding:0px;
 
+				line-height: 1px;
 				font-size: 48px;
-				font-weight: 100;
-				text-shadow: 2px 3px 9px;
-				
+				text-shadow: 2px 3px 7px;
 			}
 			.operateButton
 			{
 				width: 90px;
 				height: 90px;
 				border: 0;
-				margin: 2px;
+				margin: 10px 2px 10px 2px;
 				background-color: transparent;
 				background-image: url("images/operate.png");
 				background-repeat: round;
+				padding:0px;
 
+				line-height: 1px;	/* 控制文字行高,不让其导致按钮上下偏移 */
 				font-size: 48px;
-				text-shadow: 2px 2px 1px;
+				text-shadow: 2px 3px 7px;
 			}
 		</style>
-		
 	</head>
 	
 	<body>
-		
 		<div>
 			<div id="bgBlur"></div>
 			<div id="topDiv">
 				<button class="titleButton" title="[C]:直接清空" onclick="optClear()">我的计算器</button><br>
 
-				<input id="rstBox" type="text" title="请用下方按键输入~" placeholder="计算内容" onchange="alert('请勿直接输入内容哦!')">
+				<input id="rstBox" type="text" title="请用下方按键输入~直接输入功能可能不稳定,可以试试.请按下方等于键[=]出结果" placeholder="计算内容">
 			</div>
 			<div id="mainDiv">
-				<button class="numButton" title="数字键[1]" onclick="inputNum(1)">1</button>
-				<button class="numButton" title="数字键[2]" onclick="inputNum(2)">2</button>
-				<button class="numButton" title="数字键[3]" onclick="inputNum(3)">3</button>
-				<button class="operateButton" title="功能键[＋]:加法运算" onclick="operate('+')">＋</button>
+				<button class="numButton" title="数字键[7]" onclick="inputNum(7)">7</button>
+				<button class="numButton" title="数字键[8]" onclick="inputNum(8)">8</button>
+				<button class="numButton" title="数字键[9]" onclick="inputNum(9)">9</button>
+				<button class="operateButton" title="功能键[÷]:除法运算" onclick="operate('/')">÷</button>
 
 				<button class="numButton" title="数字键[4]" onclick="inputNum(4)">4</button>
 				<button class="numButton" title="数字键[5]" onclick="inputNum(5)">5</button>
 				<button class="numButton" title="数字键[6]" onclick="inputNum(6)">6</button>
-				<button class="operateButton" title="功能键[－]:减法运算" onclick="operate('-')">－</button>
-
-				<button class="numButton" title="数字键[7]" onclick="inputNum(7)">7</button>
-				<button class="numButton" title="数字键[8]" onclick="inputNum(8)">8</button>
-				<button class="numButton" title="数字键[9]" onclick="inputNum(9)">9</button>
 				<button class="operateButton" title="功能键[×]:乘法运算" onclick="operate('*')">×</button>
 
-				<button class="operateButton" title="功能键[Del]:删除最后一个字符" onclick="operate('Del')">Del</button>
+				<button class="numButton" title="数字键[1]" onclick="inputNum(1)">1</button>
+				<button class="numButton" title="数字键[2]" onclick="inputNum(2)">2</button>
+				<button class="numButton" title="数字键[3]" onclick="inputNum(3)">3</button>
+				<button class="operateButton" title="功能键[－]:减法运算" onclick="operate('-')">－</button>
+
+				<button class="operateButton" title="功能键[Del]:删除最后一个字符" onclick="operate('Del')">⇦</button>
 				<button class="numButton" title="数字键[0]" onclick="inputNum(0)">0</button>
 				<button class="operateButton" title="功能键[＝]:计算结果" onclick="operate('=')">＝</button>
-				<button class="operateButton" title="功能键[÷]:除法运算" onclick="operate('/')">÷</button>
+				<button class="operateButton" title="功能键[＋]:加法运算" onclick="operate('+')">＋</button>
 			</div>
 		</div>
 		<script type="text/javascript" src="Calc.js"></script>
